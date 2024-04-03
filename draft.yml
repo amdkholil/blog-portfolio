@@ -1,0 +1,42 @@
+models:
+  Post:
+    title: string
+    slug: string
+    body: text
+    thumbnail: string nullable
+    status: string
+    views: int
+    created_by: bigint
+    published: nullable timestamp
+    relationships:
+      hasMany: Category, Comment
+
+  Category:
+    name: string
+    slug: string
+    relationships:
+      hasMany: Category
+
+  Comment:
+    post_id: id foreign:post
+    body: text
+    creatd_by: bigint
+    relationships:
+      belongsTo: Post
+
+  Protofolio:
+    title: string
+    slug: string
+    description: text
+    stack: string
+    repository: string
+    link: string
+
+  PortofolioImage:
+    portofolio_id: id foreign:portofolio
+    image: string
+
+
+
+factory: Post, Category, Comment
+seeders: Post, Category, Comment
